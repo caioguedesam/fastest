@@ -32,9 +32,10 @@ public class Player : MonoBehaviour
     private float _velocityXSmoothing;
     private float _timeToJumpMax;
     private float _gravity;
-    private Vector3 _velocity;
+    [HideInInspector] public Vector3 _velocity;
     private float _jumpVelocity;
 
+    // Player references
     private Controller2D _controller;
 
     // GetInput: gets and stores data for all kinds of player input

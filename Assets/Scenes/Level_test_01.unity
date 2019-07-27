@@ -449,6 +449,8 @@ GameObject:
   m_Component:
   - component: {fileID: 1255172391}
   - component: {fileID: 1255172392}
+  - component: {fileID: 1255172393}
+  - component: {fileID: 1255172394}
   m_Layer: 9
   m_Name: gfx
   m_TagString: Untagged
@@ -507,7 +509,8 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 97b35b8c5040c7242afcb511dec186c5, type: 3}
+  m_Sprite: {fileID: 3860224877880040575, guid: 9ea468213565fb148839bac2b356294d,
+    type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -518,6 +521,38 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!95 &1255172393
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1255172390}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: f6b1732115d240d4bb6b0b81571b2711, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &1255172394
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1255172390}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e6844089e74c4934797ead3fc1b47581, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _idleToleranceVelocity: 0.15
 --- !u!1 &1407962250
 GameObject:
   m_ObjectHideFlags: 0
@@ -544,7 +579,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1407962250}
-  m_LocalRotation: {x: 0, y: -0, z: -0.002128322, w: 0.99999774}
+  m_LocalRotation: {x: 0, y: 0, z: -0.0021292581, w: 0.99999774}
   m_LocalPosition: {x: 1.88, y: -2.48, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -569,6 +604,7 @@ MonoBehaviour:
   _distanceToJumpMax: 2.5
   _accelerationTimeAirborne: 0.1
   _accelerationTimeGrounded: 0.05
+  _velocity: {x: 0, y: 0, z: 0}
 --- !u!114 &1407962255
 MonoBehaviour:
   m_ObjectHideFlags: 0
