@@ -450,7 +450,6 @@ GameObject:
   - component: {fileID: 1255172391}
   - component: {fileID: 1255172392}
   - component: {fileID: 1255172393}
-  - component: {fileID: 1255172394}
   m_Layer: 9
   m_Name: gfx
   m_TagString: Untagged
@@ -540,19 +539,6 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
---- !u!114 &1255172394
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1255172390}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e6844089e74c4934797ead3fc1b47581, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _idleToleranceVelocity: 0.15
 --- !u!1 &1407962250
 GameObject:
   m_ObjectHideFlags: 0
@@ -605,6 +591,8 @@ MonoBehaviour:
   _accelerationTimeAirborne: 0.1
   _accelerationTimeGrounded: 0.05
   _velocity: {x: 0, y: 0, z: 0}
+  _runAnimTolerance: 0.15
+  _fallAnimTolerance: 1
 --- !u!114 &1407962255
 MonoBehaviour:
   m_ObjectHideFlags: 0

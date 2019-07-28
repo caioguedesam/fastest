@@ -38,6 +38,15 @@ public class Player : MonoBehaviour
     // Player references
     private Controller2D _controller;
 
+    // Animation variables
+    public float _runAnimTolerance = .15f;
+    public float _fallAnimTolerance = .2f;
+    private bool _facingRight, _facingRightOld;
+
+    // Animation references
+    private Animator _animator;
+    private Player _player;
+
     // GetInput: gets and stores data for all kinds of player input
     private void GetInput()
     {
@@ -55,12 +64,21 @@ public class Player : MonoBehaviour
         _timeToJumpMax = _distanceToJumpMax / _moveSpeed;
         _jumpVelocity = (2 * _jumpHeight) / _timeToJumpMax;
         _gravity = (-2 * _jumpHeight) / Mathf.Pow(_timeToJumpMax, 2);
+
+        // Animation set up
+        _animator = GetComponentInChildren<Animator>();
+        _player = GetComponent<Player>();
+        _facingRight = true;
+        _facingRightOld = true;
     }
 
     void Update()
     {
+        // Checking player's front direction and updating scale accordingly
+        CalculateFacing();
+
         // If player is grounded or collides with ceiling, stops vertical velocity
-        if(_controller._collisions.above || _controller._collisions.below)
+        if (_controller._collisions.above || _controller._collisions.below)
         {
             _velocity.y = 0f;
         }
@@ -72,7 +90,16 @@ public class Player : MonoBehaviour
         if(_jumpInput && _controller._collisions.below)
         {
             _velocity.y = _jumpVelocity;
+
+            // Controlling jumping up animation
+            _animator.Play("Player_jump_up");
         }
+
+        // Controlling transition animation
+        _animator.SetBool("jumpTransition", (_velocity.y < _fallAnimTolerance && _velocity.y > -_fallAnimTolerance) ? true : false);
+
+        // Controlling landing animation
+        _animator.SetBool("hasLanded", (_controller._collisions.below && _controller._collisions.velocityOld.y < 0) ? true : false);
 
         // Setting horizontal speed
         float targetVelocityX = _horizontalInput * _moveSpeed;
@@ -84,5 +111,25 @@ public class Player : MonoBehaviour
 
         // Moving the player
         _controller.Move(_velocity * Time.deltaTime);
+
+        // Controlling running animation
+        _animator.SetBool("isRunning", (_player._velocity.x > _runAnimTolerance || _player._velocity.x < -_runAnimTolerance));
+    }
+
+    private void CalculateFacing()
+    {
+        _facingRightOld = _facingRight;
+
+        if (_player._velocity.x > 0)
+            _facingRight = true;
+        else if (_player._velocity.x < 0)
+            _facingRight = false;
+
+        if (_facingRightOld != _facingRight)
+        {
+            Vector3 _localScale = GetComponentInParent<Transform>().localScale;
+            _localScale.x *= -1;
+            GetComponentInParent<Transform>().localScale = _localScale;
+        }
     }
 }
